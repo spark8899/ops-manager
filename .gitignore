@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+*.DS_Store
 
 # Test binary, built with `go test -c`
 *.test
@@ -13,3 +14,16 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+#nodejs
+web/dist
+web/node_modules
+
+#server
+server/cmd/ops-manager/ops-manager
+server/cmd/ops-manager/data
+server/data
+server/internal/app/test/data
+server/tmp
+server/latest_log
+server/log/.*

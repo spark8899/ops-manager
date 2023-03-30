@@ -16,11 +16,11 @@ type server interface {
 
 func RunWindowsServer() {
 	if global.OPM_CONFIG.System.UseMultipoint || global.OPM_CONFIG.System.UseRedis {
-		// 初始化redis服务
+		// init redis service
 		initialize.Redis()
 	}
 
-	// 从db加载jwt数据
+	// from db load jwt data
 	if global.OPM_DB != nil {
 		system.LoadAll()
 	}
@@ -30,7 +30,6 @@ func RunWindowsServer() {
 
 	address := fmt.Sprintf(":%d", global.OPM_CONFIG.System.Addr)
 	s := initServer(address, Router)
-	// 保证文本顺序输出
 	// In order to ensure that the text order output can be deleted
 	time.Sleep(10 * time.Microsecond)
 	global.OPM_LOG.Info("server run success on ", zap.String("address", address))

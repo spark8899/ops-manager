@@ -14,13 +14,13 @@ var FileRotatelogs = new(fileRotatelogs)
 
 type fileRotatelogs struct{}
 
-// GetWriteSyncer 获取 zapcore.WriteSyncer
-// Author [SliverHorn](https://github.com/SliverHorn)
+// GetWriteSyncer get zapcore.WriteSyncer
+// Author spark8899
 func (r *fileRotatelogs) GetWriteSyncer(level string) (zapcore.WriteSyncer, error) {
 	fileWriter, err := rotatelogs.New(
 		path.Join(global.OPM_CONFIG.Zap.Director, "%Y-%m-%d", level+".log"),
 		rotatelogs.WithClock(rotatelogs.Local),
-		rotatelogs.WithMaxAge(time.Duration(global.OPM_CONFIG.Zap.MaxAge)*24*time.Hour), // 日志留存时间
+		rotatelogs.WithMaxAge(time.Duration(global.OPM_CONFIG.Zap.MaxAge)*24*time.Hour), // Log retention time
 		rotatelogs.WithRotationTime(time.Hour*24),
 	)
 	if global.OPM_CONFIG.Zap.LogInConsole {

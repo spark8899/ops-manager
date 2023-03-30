@@ -1,10 +1,10 @@
 /*
- * @Author: 逆光飞翔 191180776@qq.com
+ * @Author: spark8899
  * @Date: 2022-12-08 17:25:49
- * @LastEditors: 逆光飞翔 191180776@qq.com
+ * @LastEditors: spark8899
  * @LastEditTime: 2022-12-08 18:00:00
  * @FilePath: \server\initialize\gorm_mssql.go
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: default setting `customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 package initialize
 
@@ -16,8 +16,8 @@ import (
 	"gorm.io/gorm"
 )
 
-// GormMssql 初始化Mssql数据库
-// Author [LouisZhang](191180776@qq.com)
+// GormMssql init Mssql
+// Author spark8899
 func GormMssql() *gorm.DB {
 	m := global.OPM_CONFIG.Mssql
 	if m.Dbname == "" {
@@ -25,7 +25,7 @@ func GormMssql() *gorm.DB {
 	}
 	mssqlConfig := sqlserver.Config{
 		DSN:               m.Dsn(), // DSN data source name
-		DefaultStringSize: 191,     // string 类型字段的默认长度
+		DefaultStringSize: 191,     // string length
 	}
 	if db, err := gorm.Open(sqlserver.New(mssqlConfig), internal.Gorm.Config(m.Prefix, m.Singular)); err != nil {
 		return nil
@@ -38,14 +38,14 @@ func GormMssql() *gorm.DB {
 	}
 }
 
-// GormMssqlByConfig 初始化Mysql数据库用过传入配置
+// GormMssqlByConfig init Mysql
 func GormMssqlByConfig(m config.Mssql) *gorm.DB {
 	if m.Dbname == "" {
 		return nil
 	}
 	mssqlConfig := sqlserver.Config{
 		DSN:               m.Dsn(), // DSN data source name
-		DefaultStringSize: 191,     // string 类型字段的默认长度
+		DefaultStringSize: 191,     // string length
 	}
 	if db, err := gorm.Open(sqlserver.New(mssqlConfig), internal.Gorm.Config(m.Prefix, m.Singular)); err != nil {
 		panic(err)

@@ -29,7 +29,7 @@ func Gorm() *gorm.DB {
 }
 
 // RegisterTables 注册数据库表专用
-// Author SliverHorn
+// Author spark8899
 func RegisterTables() {
 	db := global.OPM_DB
 	err := db.AutoMigrate(

@@ -33,7 +33,7 @@
               </el-col>
             </el-row>
           </div>
-          <div>
+          <!--<div>
             <div class="opm-top-card-left-item">
               使用教学：
               <a
@@ -50,7 +50,7 @@
                 href="https://plugin.gin-vue-admin.com/#/layout/home"
               >https://plugin.gin-vue-admin.com</a>
             </div>
-          </div>
+          </div>-->
         </div>
         <img src="@/assets/dashboard.png" class="opm-top-card-right" alt>
       </div>

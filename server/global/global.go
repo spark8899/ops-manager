@@ -32,14 +32,14 @@ var (
 	lock       sync.RWMutex
 )
 
-// GetGlobalDBByDBName 通过名称获取db list中的db
+// GetGlobalDBByDBName get by name db list' db
 func GetGlobalDBByDBName(dbname string) *gorm.DB {
 	lock.RLock()
 	defer lock.RUnlock()
 	return OPM_DBList[dbname]
 }
 
-// MustGetGlobalDBByDBName 通过名称获取db 如果不存在则panic
+// MustGetGlobalDBByDBName get by name db， panic if not present
 func MustGetGlobalDBByDBName(dbname string) *gorm.DB {
 	lock.RLock()
 	defer lock.RUnlock()

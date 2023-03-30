@@ -11,14 +11,14 @@ type writer struct {
 	logger.Writer
 }
 
-// NewWriter writer 构造函数
-// Author [SliverHorn](https://github.com/SliverHorn)
+// NewWriter writer build function
+// Author spark8899
 func NewWriter(w logger.Writer) *writer {
 	return &writer{Writer: w}
 }
 
-// Printf 格式化打印日志
-// Author [SliverHorn](https://github.com/SliverHorn)
+// Printf format print log
+// Author spark8899
 func (w *writer) Printf(message string, data ...interface{}) {
 	var logZap bool
 	switch global.OPM_CONFIG.System.DbType {

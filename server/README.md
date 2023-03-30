@@ -1,5 +1,15 @@
 ## server项目结构
 
+# import database
+```
+mysql -uroot -p -h xxx.xxx.xx.xx < resource/opsmanager.sql
+```
+
+# swagger html
+```
+http://127.0.0.1:8888/swagger/index.html
+```
+
 ```shell
 ├── api
 │   └── v1

@@ -4,7 +4,7 @@
 
 const config = {
   appName: 'ops-manager',
-  appLogo: 'https://ops-manager.com/img/logo.png',
+  appLogo: 'src/assets/logo.png',
   showViteLogo: true
 }
 

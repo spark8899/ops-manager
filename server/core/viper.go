@@ -17,37 +17,37 @@ import (
 )
 
 // Viper //
-// 优先级: 命令行 > 环境变量 > 默认值
-// Author [SliverHorn](https://github.com/SliverHorn)
+// priority: command Line > environment variable > defaults
+// Author spark8899
 func Viper(path ...string) *viper.Viper {
 	var config string
 
 	if len(path) == 0 {
 		flag.StringVar(&config, "c", "", "choose config file.")
 		flag.Parse()
-		if config == "" { // 判断命令行参数是否为空
-			if configEnv := os.Getenv(internal.ConfigEnv); configEnv == "" { // 判断 internal.ConfigEnv 常量存储的环境变量是否为空
+		if config == "" { // check command Line
+			if configEnv := os.Getenv(internal.ConfigEnv); configEnv == "" { // decision internal.ConfigEnv environment variable is empty
 				switch gin.Mode() {
 				case gin.DebugMode:
 					config = internal.ConfigDefaultFile
-					fmt.Printf("您正在使用gin模式的%s环境名称,config的路径为%s\n", gin.EnvGinMode, internal.ConfigDefaultFile)
+					fmt.Printf("gin model %s environment name, config's path is %s\n", gin.EnvGinMode, internal.ConfigDefaultFile)
 				case gin.ReleaseMode:
 					config = internal.ConfigReleaseFile
-					fmt.Printf("您正在使用gin模式的%s环境名称,config的路径为%s\n", gin.EnvGinMode, internal.ConfigReleaseFile)
+					fmt.Printf("gin model %s environment name, config's path is %s\n", gin.EnvGinMode, internal.ConfigReleaseFile)
 				case gin.TestMode:
 					config = internal.ConfigTestFile
-					fmt.Printf("您正在使用gin模式的%s环境名称,config的路径为%s\n", gin.EnvGinMode, internal.ConfigTestFile)
+					fmt.Printf("gin model %s environment name, config's path is %s\n", gin.EnvGinMode, internal.ConfigTestFile)
 				}
-			} else { // internal.ConfigEnv 常量存储的环境变量不为空 将值赋值于config
+			} else { // internal.ConfigEnv environment variable is empty, assign to config
 				config = configEnv
-				fmt.Printf("您正在使用%s环境变量,config的路径为%s\n", internal.ConfigEnv, config)
+				fmt.Printf("you are using the %s environment variable, config's path %s\n", internal.ConfigEnv, config)
 			}
-		} else { // 命令行参数不为空 将值赋值于config
-			fmt.Printf("您正在使用命令行的-c参数传递的值,config的路径为%s\n", config)
+		} else { // The command line parameter is not empty, assign the value to config
+			fmt.Printf("the value you are passing with the -c parameter of the command line, config' path is '%s\n", config)
 		}
-	} else { // 函数传递的可变参数的第一个值赋值于config
+	} else { // The first value of the variable parameter passed by the function is assigned to config
 		config = path[0]
-		fmt.Printf("您正在使用func Viper()传递的值,config的路径为%s\n", config)
+		fmt.Printf("you are using the value passed by func Viper(), config's path is %s\n", config)
 	}
 
 	v := viper.New()
@@ -69,7 +69,7 @@ func Viper(path ...string) *viper.Viper {
 		fmt.Println(err)
 	}
 
-	// root 适配性 根据root位置去找到对应迁移位置,保证root路径有效
+	// root adaptability Find the corresponding migration location according to the root location to ensure that the root path is valid
 	global.OPM_CONFIG.AutoCode.Root, _ = filepath.Abs("..")
 	return v
 }

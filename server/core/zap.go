@@ -11,10 +11,10 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-// Zap 获取 zap.Logger
-// Author [SliverHorn](https://github.com/SliverHorn)
+// Zap get zap.Logger
+// Author spark8899
 func Zap() (logger *zap.Logger) {
-	if ok, _ := utils.PathExists(global.OPM_CONFIG.Zap.Director); !ok { // 判断是否有Director文件夹
+	if ok, _ := utils.PathExists(global.OPM_CONFIG.Zap.Director); !ok { // Determine whether there is a Director folder
 		fmt.Printf("create %v directory\n", global.OPM_CONFIG.Zap.Director)
 		_ = os.Mkdir(global.OPM_CONFIG.Zap.Director, os.ModePerm)
 	}

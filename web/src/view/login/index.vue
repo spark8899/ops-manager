@@ -5,10 +5,10 @@
         <div class="login_panel_form_title">
           <img
             class="login_panel_form_title_logo"
-            :src="$GIN_VUE_ADMIN.appLogo"
+            :src="$OPS_MANAGER.appLogo"
             alt
           >
-          <p class="login_panel_form_title_p">{{ $GIN_VUE_ADMIN.appName }}</p>
+          <p class="login_panel_form_title_p">{{ $OPS_MANAGER.appName }}</p>
         </div>
         <el-form
           ref="loginForm"
@@ -53,16 +53,16 @@
             </div>
           </el-form-item>
           <el-form-item>
-            <el-button
+            <!-- <el-button
               type="primary"
               style="width: 46%"
               size="large"
               @click="checkInit"
-            >前往初始化</el-button>
+            >前往初始化</el-button> -->
             <el-button
               type="primary"
               size="large"
-              style="width: 46%; margin-left: 8%"
+              style="width: 46%; margin-left: 25%"
               @click="submitForm"
             >登 录</el-button>
           </el-form-item>
@@ -71,20 +71,17 @@
       <div class="login_panel_right" />
       <div class="login_panel_foot">
         <div class="links">
-          <a href="http://doc.henrongyi.top/" target="_blank">
+          <a href="https://github.com/spark8899/ops-manager/" target="_blank">
             <img src="@/assets/docs.png" class="link-icon" alt="文档">
           </a>
-          <a href="https://support.qq.com/product/371961" target="_blank">
-            <img src="@/assets/kefu.png" class="link-icon" alt="客服">
-          </a>
           <a
-            href="https://github.com/flipped-aurora/gin-vue-admin"
+            href="https://github.com/spark8899/ops-manager"
             target="_blank"
           >
             <img src="@/assets/github.png" class="link-icon" alt="github">
           </a>
-          <a href="https://space.bilibili.com/322210472" target="_blank">
-            <img src="@/assets/video.png" class="link-icon" alt="视频站">
+          <a href="https://github.com/spark8899/ops-manager/tree/main/server/docs" target="_blank">
+            <img src="@/assets/video.png" class="link-icon" alt="架构图">
           </a>
         </div>
         <div class="copyright">
@@ -103,13 +100,13 @@ export default {
 
 <script setup>
 import { captcha } from '@/api/user'
-import { checkDB } from '@/api/initdb'
+// import { checkDB } from '@/api/initdb'
 import BottomInfo from '@/view/layout/bottomInfo/bottomInfo.vue'
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 import { useUserStore } from '@/pinia/modules/user'
-const router = useRouter()
+// const router = useRouter()
 // 验证函数
 const checkUsername = (rule, value, callback) => {
   if (value.length < 5) {
@@ -147,7 +144,7 @@ const loginForm = ref(null)
 const picPath = ref('')
 const loginFormData = reactive({
   username: 'admin',
-  password: '123456',
+  password: 'admin123456',
   captcha: '',
   captchaId: '',
   openCaptcha: false,
@@ -187,7 +184,7 @@ const submitForm = () => {
 }
 
 // 跳转初始化
-const checkInit = async() => {
+/* const checkInit = async() => {
   const res = await checkDB()
   if (res.code === 0) {
     if (res.data?.needInit) {
@@ -200,7 +197,7 @@ const checkInit = async() => {
       })
     }
   }
-}
+} */
 
 </script>
 
